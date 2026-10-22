@@ -18,7 +18,7 @@ extern "C" {
  * @brief Output resource and electrical polarity supplied by the composition.
  *
  * @details The BSP configures the output and its initial level. This component
- * borrows the handle without selecting pins or constructing GPIO resources.
+ * uses the output GPIO without selecting pins or constructing GPIO resources.
  * The caller reserves output control for this component.
  */
 struct led_config {
@@ -33,7 +33,7 @@ struct led_config {
  * cmp_led_init() sets all fields. No singleton or HAL arena allocation.
  */
 struct led {
-    hal_gpio_t *gpio;  /** Borrowed output GPIO handle. */
+    hal_gpio_t *gpio;  /** Output GPIO handle. */
     bool active_level; /** Electrical level that illuminates the LED. */
     bool initialized;  /** True after the initial off command succeeds. */
 };
